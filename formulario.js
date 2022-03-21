@@ -22,13 +22,13 @@ function checkInputs() {
         setSuccessFor(username);
     }
 
-    if (emailValue ===""){
+    if (emailValue === ""){
         setErrorFor(email, "O email é obrigatório.")
     } else if (!checkEmail(emailValue)) {
-        setErrorFor(email, "Por favor insira um emial obrigatório");
+        setErrorFor(email, "Por favor insira um email obrigatório");
     } else {
         setSuccessFor(email)
-    }
+    }  
 }
 
 function setErrorFor(input, massege) {
@@ -36,7 +36,7 @@ function setErrorFor(input, massege) {
     const small = formControl.querySelector("small")
 
     // Adiciona a menssagem de erro
-    small.innerText = message;
+    small.innerText = massege;
 
     // Adiciona a classe erro
     formControl.className = "form-control error";
@@ -47,4 +47,8 @@ function setSuccessFor(input) {
 
     // Adicionar a classe de sucesso 
     formControl.className = "form-control success";
+}
+
+function checkEmail(email) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
