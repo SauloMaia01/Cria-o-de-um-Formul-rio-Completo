@@ -28,7 +28,33 @@ function checkInputs() {
         setErrorFor(email, "Por favor insira um email obrigatório");
     } else {
         setSuccessFor(email)
-    }  
+    }
+    
+    if (passwordValue === "") {
+        setErrorFor(password, "A senha é obrigatória.");
+    } else if (passwordValue.length < 7) {
+        setErrorFor(passwordValue, "A senha deve ter no mínimo 7 caracteres.");
+    } else {
+        setSuccessFor(password);
+    }
+    
+    if (passwordConfirmationValue === "") {
+        setErrorFor(passwordConfirmation, "A confirmação da senha é obrigatória.");
+    } else if (passwordConfirmationValue !== passwordValue) {
+        setErrorFor(passwordConfirmation, "As senhas não conferem.");
+    } else {
+        setSuccessFor(passwordConfirmation)
+    }
+
+    const formControls = form.querySelectorAll(".form-control");
+
+    const formIsValid = [... formControls].every((formControl) => {
+        return formControl.className === "form-control success";
+    });
+
+    if (formIsValid) {
+        console.log("O formulário esta 100% válido!");
+    }
 }
 
 function setErrorFor(input, massege) {
