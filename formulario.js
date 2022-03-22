@@ -11,7 +11,7 @@ form.addEventListener("submit", (e) => {
 });
 
 function checkInputs() {
-    const usernameValue = username.value;
+    const usernameValue = username.value; 
     const emailValue = email.value;
     const passwordValue = password.value;
     const passwordConfirmationValue = passwordConfirmation.value;
